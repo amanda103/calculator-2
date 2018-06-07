@@ -24,25 +24,26 @@ playing = True
 while playing:
     input_string = input("> ")
     if input_string == "q" or input_string == "quit":
-        playing = False
+        break
 
     tokens = input_string.split(" ")
 
     operand = tokens[0]
-    
     if operand not in allowed_operands:
-        print("That operand is not allowed, please try again")
+        print("Please enter an allowed operand")
     else:
-        for token in tokens(1: len(tokens)):
-            if token.isdigit() is False:
+        nums = tokens[1:]
+
+        for num in nums:
+            if num.isdigit() is False:
                 print("Please enter valid numbers")
             else:
-                num1 = int(tokens[1])
+                num1 = int(nums[0])
 
-                if len(tokens) > 2:
-                    num2 = int(tokens[2])
-                    if len(tokens) > 3:
-                        num3 = int(tokens[3])
+                if len(nums) > 1:
+                    num2 = int(nums[1])
+                    if len(nums) > 2:
+                        num3 = int(nums[2])
 
                 if operand == "+":
                     result = add(num1, num2)
@@ -65,4 +66,4 @@ while playing:
                 elif operand == "+**":
                     result = add_cubes(num1, num2)
 
-print(result)
+    print(result)
